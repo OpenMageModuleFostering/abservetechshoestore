@@ -20,10 +20,11 @@ div.menu {
 div.menu a:link, div.menu a:visited {
     display: block;
     height: 50px;
-    padding-left: 53px;
+/*    padding-left: 53px;
     padding-right: 53px;
-     padding-top: 0;
-     padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;*/
+    text-align: center;
 }
 div.menu a span {
     display: block;
@@ -181,6 +182,7 @@ div.menu {
   line-height: 0;
   text-transform: uppercase;
   border-right: 1px solid #cbcbcb;
+  width: 12.7%;
 }
 a.level1:link, a.level1:visited {
     text-transform: none;
@@ -230,9 +232,9 @@ a.level2:hover, a.level2.act, a.level2.actParent {
     margin-left: 0px;
 }
 /*MOBILE MENU STYLES*/
-#menu-button, .parentMenu {
+/*#menu-button, .parentMenu {
     display: inline-block;
-}
+}*/
 html[xmlns] #menu-button, html[xmlns] .parentMenu {
     display: block;
 }

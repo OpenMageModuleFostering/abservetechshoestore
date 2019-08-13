@@ -7,7 +7,9 @@
 	</div>
 	<div class="brands">
 	<?php 
-		$parentCategoryId = 23;
+		$brand_getconfig = trim(Mage::getStoreConfig('settings/configuration/brand'));
+		$parentCategoryId = str_replace('Brand_','', $brand_getconfig);
+		/*$parentCategoryId = 23;*/
 		$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
 		$parentcatname = $cat->getName();
 		$subcats = $cat->getChildren();

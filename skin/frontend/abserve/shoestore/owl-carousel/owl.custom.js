@@ -53,4 +53,88 @@ jQuery(document).ready(function() {
 
 //  ********* End Banner ********* //   
 
+  jQuery('.new-products .title h2').appear(function() {
+    jQuery('.new-products .title h2').addClass('animated rotateIn');  
+  });
+
+  jQuery('.category-products .title h2').appear(function() {
+    jQuery('.category-products .title h2').addClass('animated rotateIn');  
+  });
+
+  jQuery('.blog_container .title h2').appear(function() {
+    jQuery('.blog_container .title h2').addClass('animated rotateIn');  
+  });
+
+  jQuery('.brand-products .title h2').appear(function() {
+    jQuery('.brand-products .title h2').addClass('animated rotateIn');  
+  });
+
+  jQuery('.new-products .title p').appear(function() {
+    jQuery('.new-products .title p').addClass('animated zoomIn');  
+  });
+
+  jQuery('.category-products .title p').appear(function() {
+    jQuery('.category-products .title p').addClass('animated zoomIn');  
+  });
+
+  jQuery('.blog_container .title p').appear(function() {
+    jQuery('.blog_container .title p').addClass('animated zoomIn');  
+  });
+
+  jQuery('.brand-products .title p').appear(function() {
+    jQuery('.brand-products .title p').addClass('animated zoomIn');  
+  });
+  
+  jQuery('.new-products .products-grid .item').appear(function() {
+    jQuery('.new-products .products-grid .item').addClass('animated flipInY');  
+  });
+
+  jQuery('.brand_img').appear(function() {
+    jQuery('.brand_img').addClass('animated flipInY');  
+  });
+
+  jQuery('.category-products .products-grid .item').appear(function() {
+    jQuery('.category-products .products-grid .item').addClass('animated flipInY');  
+  });
+
+  jQuery('.blog_left').appear(function() {
+    jQuery('.blog_left').addClass('animated bounceInLeft');  
+  });
+
+  jQuery('.blog_right').appear(function() {
+    jQuery('.blog_right').addClass('animated bounceInRight');  
+  });
+
+  jQuery('.call').appear(function() {
+    jQuery('.call').addClass('animated slideInLeft');  
+  });
+
+  jQuery('.subscribe').appear(function() {
+    jQuery('.subscribe').addClass('animated slideInRight');  
+  });
+
+  jQuery('.chat').appear(function() {
+    jQuery('.chat').addClass('animated zoomIn');  
+  });
+
+  jQuery('.advertisement_block1').appear(function() {
+    jQuery('.advertisement_block1').addClass('animated slideInLeft');  
+  });
+
+  jQuery('.advertisement_block3').appear(function() {
+    jQuery('.advertisement_block3').addClass('animated slideInRight');  
+  });
+
+  jQuery('.advertisement_block2').appear(function() {
+    jQuery('.advertisement_block2').addClass('animated zoomIn');  
+  });
+
+  jQuery('#tabs li').appear(function() {
+    jQuery('#tabs li').addClass('animated zoomIn');  
+  });
+
+  jQuery('.services i').appear(function() {
+    jQuery('.services i').addClass('animated tada');  
+  });
+
 });

@@ -62,7 +62,7 @@
                     <custommenu module="custommenu">
                         <title>Custom Megamenu</title>
                         <sort_order>3</sort_order>
-                        <action>adminhtml/system_config/edit/section/custommenu</action>
+                        <action>adminhtml/system_config/edit/section/custom_menu</action>
                     </custommenu>
                 </children>
             </settings>

@@ -92,7 +92,8 @@ class Abserve_CustomMenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         if (Mage::getStoreConfig('custom_menu/general/non_breaking_space')) {
             $name = str_replace(' ', '&nbsp;', $name);
         }
-        $htmlTop[] = '<span>' . $name . '</span>';
+        $htmlTop[] = '<span>' . $name . '<i class="fa fa-angle-down"></i> </span>';
+        //$htmlTop[] = '<i class="fa fa-angle-down"></i>';        
         $htmlTop[] = '</a>';
         $htmlTop[] = '</div>';
         $htmlTop[] = '</div>';
@@ -101,7 +102,7 @@ class Abserve_CustomMenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         if ($drawPopup) {
             $htmlPopup = array();
             // --- Popup function for hide ---
-            $htmlPopup[] = '<div id="popup' . $id . '" class="abserve-custom-menu-popup" onmouseout="abserveHideMenuPopup(this, event, \'popup' . $id . '\', \'menu' . $id . '\')" onmouseover="abservePopupOver(this, event, \'popup' . $id . '\', \'menu' . $id . '\')">';
+            $htmlPopup[] = '<div id="popup' . $id . '" class="abserve-custom-menu-popup animated zoomIn" onmouseout="abserveHideMenuPopup(this, event, \'popup' . $id . '\', \'menu' . $id . '\')" onmouseover="abservePopupOver(this, event, \'popup' . $id . '\', \'menu' . $id . '\')">';
             // --- draw Sub Categories ---
             if (count($activeChildren)) {
                 $columns = (int)Mage::getStoreConfig('custom_menu/columns/count');

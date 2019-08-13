@@ -55,7 +55,7 @@ $helpno = Mage::getStoreConfig('settings/helpline/helplineno');
                 <?php echo $this->getChildHtml('store_switcher') ?>
             </div>
             <?php echo $this->getChildHtml('currency_switcher') ?>
-            <a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" data-target-element="#header-account" class="skip-link skip-account">
+            <a onmouseover="hoveraccount()" href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" data-target-element="#header-account" class="skip-link skip-account">
                 <span class="label"><?php echo $this->__('My Account'); ?></span>
             </a>
         </div>
@@ -65,7 +65,15 @@ $helpno = Mage::getStoreConfig('settings/helpline/helplineno');
         </p>
     </div>
 </div>
-
+<script type="text/javascript">
+    function hoveraccount(){
+        jQuery(".skip-content").removeClass("skip-active");
+        jQuery("#header-account").addClass("skip-active");
+    }
+    function unhoveraccount(){
+        jQuery("#header-account").removeClass("skip-active");
+    }   
+</script>
 <header id="header" class="page-header">
     <div class="top_header clearfix hidden-mobile"> 
         <div class="header_logo ">
@@ -134,7 +142,7 @@ $helpno = Mage::getStoreConfig('settings/helpline/helplineno');
 
         <!-- Account -->
 
-        <div id="header-account" class="skip-content">
+        <div id="header-account" class="skip-content"  onmouseover="hoveraccount()" onmouseout="unhoveraccount()">
             <?php echo $this->getChildHtml('topLinks') ?>
         </div>
     </div>

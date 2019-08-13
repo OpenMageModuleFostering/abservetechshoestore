@@ -48,8 +48,40 @@
     </global>
     <default> 
         <settings>
+            <configuration>
+                <brand>Brand_23</brand>
+                <tabfirst>Tabfirst_3</tabfirst>
+                <tabsecond>Tabsecond_4</tabsecond>
+                <tabthird>Tabthird_5</tabthird>
+            </configuration>
+        </settings>
+
+        <settings>
             <general>
+                <copyrights>Copyright@2015.All rights reserved.</copyrights>
+                <skype>abservetech</skype>
+                <skypeno>+91 452 4366678</skypeno>
+                <facebook>abservetech</facebook>
+                <twitter>abservetech</twitter>
+                <linkedin>abservetech</linkedin>
+                <gplus>+Abservetech</gplus>
             </general>
+        </settings>
+
+        <settings>
+            <contactus>
+                <address>Krishnapuram Colony</address>
+                <mobileno>+91 9976659085</mobileno>
+                <telephoneno>+91 452 4366678</telephoneno>
+                <contactmail>abservetech@gmail.com</contactmail>
+            </contactus>
+        </settings>
+
+        <settings>
+            <helpline>
+                <helplineno>support@abservetech.com</helplineno>
+                <helplineemail>+91 0452 4366678</helplineemail>
+            </helpline>
         </settings>
     </default>
      <adminhtml>

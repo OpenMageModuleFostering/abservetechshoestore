@@ -11,8 +11,18 @@
         <action method="addItem">
                 <type>skin_css</type>
                 <name>owl-carousel/owl.theme.css</name>
-            </action>        
-            
+            </action>
+
+        <action method="addItem">
+                <type>skin_css</type>
+                <name>css/animate.css</name>
+            </action> 
+
+		<action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.appear.js</name>
+            </action>
+
         <action method="addItem">
                 <type>skin_js</type>
                 <name>owl-carousel/owl.carousel.js</name>

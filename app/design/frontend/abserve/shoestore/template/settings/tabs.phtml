@@ -1,7 +1,27 @@
+<?php 
+
+  $tab1 = trim(Mage::getStoreConfig('settings/configuration/tabfirst'));
+  $tab_first_id = str_replace('Tabfirst_', '', $tab1);
+  $tab2 = trim(Mage::getStoreConfig('settings/configuration/tabsecond'));
+  $tab_second_id = str_replace('Tabsecond_', '', $tab2);
+  $tab3 = trim(Mage::getStoreConfig('settings/configuration/tabthird'));
+  $tab_third_id = str_replace('Tabthird_', '', $tab3);
+  
+  $_category1 = Mage::getModel('catalog/category')->load($tab_first_id);
+  $categoryName1 = $_category1->getName();
+
+  $_category2 = Mage::getModel('catalog/category')->load($tab_second_id);
+  $categoryName2 = $_category2->getName();
+
+  $_category3 = Mage::getModel('catalog/category')->load($tab_third_id);
+  $categoryName3 = $_category3->getName();
+
+?>
+
 <div class="category-products">
 <div class="title"> 
-      <h2> Category Products </h2>
-      <p>
+      <h2 class="animated rotateIn"> Featured Products </h2>
+      <p class="animated zoomIn">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s.
       </p>
 </div>
@@ -9,24 +29,24 @@
 <div id="tabs" class="tabs">
   <nav>
     <ul>
-      <li><a href="#section-1" class="icon-shop"><span>Mens</span></a></li>
-      <li><a href="#section-2" class="icon-cup"><span>Womens</span></a></li>
-      <li><a href="#section-3" class="icon-food"><span>Kids</span></a></li>
+      <li><a href="#section-1" class="icon-shop"><span><?php echo $categoryName1; ?></span></a></li>
+      <li><a href="#section-2" class="icon-cup"><span><?php echo $categoryName2; ?></span></a></li>
+      <li><a href="#section-3" class="icon-food"><span><?php echo $categoryName3; ?></span></a></li>
     </ul>
   </nav>
   <div class="content">
 
     <section id="section-1">
       <?php 
-          $cat_param = $_GET['cat'] ; 
+          /*$cat_param = $_GET['cat'] ; */
           $_helper = $this->helper('catalog/output'); 
           $_columnCount = $this->getColumnCount();
-          if($cat_param){
+          /*if($cat_param){
               $cat = Mage::getModel('catalog/category')->load($cat_param);
           }else{
-              $cat = Mage::getModel('catalog/category')->load(5);
-          }
-          
+              $cat = Mage::getModel('catalog/category')->load($tab_first_id);
+          }*/
+          $cat = Mage::getModel('catalog/category')->load($tab_first_id);
           $_productCollection = $cat->getProductCollection()
               ->addAttributeToSelect('*')
               ->addAttributeToFilter('status',1)
@@ -120,16 +140,16 @@
     </section>
     <section id="section-2">
       <?php 
-          $cat_param = $_GET['cat'] ; 
+          /*$cat_param = $_GET['cat'] ; */
           $_helper = $this->helper('catalog/output'); 
           $_columnCount = $this->getColumnCount();
-          if($cat_param){
+          /*if($cat_param){
               $cat = Mage::getModel('catalog/category')->load($cat_param);
           }else{
-              $cat = Mage::getModel('catalog/category')->load(6);
-          }
-          
-          $_productCollection = $cat->getProductCollection()
+              $cat = Mage::getModel('catalog/category')->load($tab_second_id);
+          }*/
+          $cat2 = Mage::getModel('catalog/category')->load($tab_second_id);
+          $_productCollection = $cat2->getProductCollection()
               ->addAttributeToSelect('*')
               ->addAttributeToFilter('status',1)
               ->addAttributeToFilter('visibility',array('neq' => 1))
@@ -221,16 +241,16 @@
     </section>
     <section id="section-3">
       <?php 
-          $cat_param = $_GET['cat'] ; 
+          /*$cat_param = $_GET['cat'] ; */
           $_helper = $this->helper('catalog/output'); 
           $_columnCount = $this->getColumnCount();
-          if($cat_param){
+          /*if($cat_param){
               $cat = Mage::getModel('catalog/category')->load($cat_param);
           }else{
-              $cat = Mage::getModel('catalog/category')->load(7);
-          }
-          
-          $_productCollection = $cat->getProductCollection()
+              $cat = Mage::getModel('catalog/category')->load($tab_third_id);
+          }*/
+          $cat3 = Mage::getModel('catalog/category')->load($tab_third_id);
+          $_productCollection = $cat3->getProductCollection()
               ->addAttributeToSelect('*')
               ->addAttributeToFilter('status',1)
               ->addAttributeToFilter('visibility',array('neq' => 1))

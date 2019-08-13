@@ -1,34 +1,3 @@
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     rwd_default
- * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
-/* ==========================================================================
-   HTML5 display definitions
-   ========================================================================== */
-/*
- * Corrects `block` display not defined in IE 8/9.
- */
 article,
 aside,
 details,
@@ -394,6 +363,7 @@ body {
   background: #FFFFFF;
   color: #000000;
   line-height: 1;
+  overflow-x: hidden;
 }
 
 html,
@@ -1207,9 +1177,9 @@ a.button:hover {
 .main-container,
 .footer-container {
   position: relative;
-  max-width: 1260px;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 30px 45px;
 }
 .main-container:after,
 .footer-container:after {
@@ -2791,7 +2761,7 @@ form .form-instructions {
 }
 
 .data-table th {
-  background: #f4f4f4;
+  background: #f6f4f5;
   text-transform: uppercase;
   line-height: 1.4;
   white-space: nowrap;
@@ -3669,7 +3639,7 @@ a.skip-link {
   display: block;
   padding: 5px 10px;
   line-height: 23px;
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -3691,6 +3661,9 @@ a.skip-link {
     padding: 0 10px 0 0;
     width: auto;
   }
+  #header-account {
+  width: 130px !important;
+}
 
 /*  #header-cart.skip-active {
     background: #FBFBFB;
@@ -5295,7 +5268,7 @@ p.product-name a:hover {
     padding: 40px 26px;
     border: 1px solid #cccccc;
     border-top: 0;
-    min-height: 165px;
+    min-height: 322px;
   }
   .product-collateral > dl > dd.current {
     display: block;
@@ -7520,12 +7493,13 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .customer-account-login .scaffold-form label:first-child {
   width: 115px;
 }
-.customer-account-login .col2-set .buttons-set {
+.customer-account-login .col2-set .buttons-set, .checkout-multishipping-login .col2-set .buttons-set {
   text-align: left;
   border-top: 0;
 }
 .customer-account-login .col2-set .buttons-set button,
-.customer-account-login .col2-set .buttons-set .button {
+.customer-account-login .col2-set .buttons-set .button, .checkout-multishipping-login .col2-set .buttons-set button,
+.checkout-multishipping-login .col2-set .buttons-set .button {
   float: none;
   min-width: 50%;
   margin: 0;
@@ -8803,7 +8777,7 @@ div.paypal-logo span > img {
 }
 #wishlist-table.clean-table thead th {
   font-size: 15px;
-  padding: 5px 0;
+  padding: 15px 0;
   text-transform: uppercase;
 }
 #wishlist-table .product-name {
@@ -8843,7 +8817,7 @@ div.paypal-logo span > img {
 }
 #wishlist-table .item-manage .button {
   font-size: 11px;
-  padding: 3px 5px;
+  padding: 7px 10px;
 }
 #wishlist-table .cart-cell {
   text-align: center;
@@ -8864,7 +8838,7 @@ div.paypal-logo span > img {
 #wishlist-table td.customer-wishlist-item-cart .button {
   font-size: 12px;
   margin-bottom: 10px;
-  padding: 3px 5px;
+  padding: 7px 5px;
   width: 100%;
 }
 #wishlist-table td.customer-wishlist-item-cart .truncated {
@@ -9142,8 +9116,7 @@ div.paypal-logo span > img {
   width: 40px;
 }
 .header-minicart .mini-products-list, .header-minicart1 .mini-products-list {
-  padding: 10px;
-  padding-top: 0px;
+  padding: 0 20px 10px;
 }
 .header-minicart .mini-products-list li, .header-minicart1 .mini-products-list li {
   padding: 8px 5px 8px 11px;
@@ -9175,12 +9148,13 @@ div.paypal-logo span > img {
   line-height: 33px;
 }
 .header-minicart .info-wrapper .qty, .header-minicart1 .info-wrapper .qty {
+  float: left;
+  height: 30px;
+  margin-right: 2px;
   padding-left: 4px;
   padding-right: 4px;
-  margin-right: 2px;
-  width: 3.2em;
   text-align: center;
-  height: 30px;
+  width: 3em;
 }
 .header-minicart .info-wrapper .quantity-button, .header-minicart1 .info-wrapper .quantity-button {
   opacity: 0;
@@ -9252,6 +9226,10 @@ div.paypal-logo span > img {
   .checkout-types.minicart {
     float: none;
     text-align: center;
+  }
+  .header-minicart .empty, .header-minicart1 .empty {
+	  padding: 10px 10px 50px;
+	  text-align: center;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -10393,20 +10371,29 @@ body {
 }
 
 /* Colors */
-.product-view .add-to-cart .qty-wrapper .qty, .customer-account .my-account .dashboard .page-title h1, .cms-privacy-policy-cookie-restriction-mode h1, .cms-customer-service .page-title h1, .cms-customer-service .disc a, .cms-customer-service dl dt, .about_main > h4, .about_content h4, .services i, .catalog-product-view .product-view .availability.in-stock span, .catalog-category-view #narrow-by-list dt, a, h1, .h1, .block-title h2, .block-title h3, .block-title strong, .block-account li strong, .block-cms-menu li strong, .block-account li a:hover, .block-cms-menu li a:hover, .button2 span, .button2 span span, .breadcrumbs a:hover, .promo-msg, .btn-remove:after, .price-box .price, .price-box .minimal-price-link, .price-box .special-price, .pages a, .pages .current, #header-account a:hover, .footer .block-title, .footer address, .footer .links a:hover, h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.product-name a:hover, p.product-name a:hover, .product-view .product-shop .product-name .h1, .product-view .product-img-box .product-name h1, .product-view .product-shop .price-box .regular-price .price, .product-view .product-shop .price-box .special-price .price, .product-view .product-shop .price-box .full-product-price .price, .grouped-items-table .name-wrapper, .crosssell h2, .opc .section.allow .step-title:hover h2, .opc .section.active .step-title h2, .product-view .product-options .swatch-attr .select-label, #customer-reviews h2, #customer-reviews h3 span, #customer-reviews dl dd .review-meta, #wishlist-table .product-name a, #wishlist-table .giftregisty-add li, #wishlist-table .truncated .details, .header-minicart .product-details .product-name a, .header-minicart .info-wrapper td, .header-minicart .subtotal .price, .search-autocomplete ul li, .product-review .product-details h2, .cms-page-view .std h1, .cms-no-route .std h1, .cms-page-view .std h2, .cms-no-route .std h2 {
+.catalogsearch-result-index .label, .catalogsearch-result-index .currently .block-subtitle, .catalogsearch-result-index #narrow-by-list dt.last, .checkout-cart-index .cart-table.data-table .button2.btn-update span, .checkout-cart-index .cart-table.data-table .button2.btn-continue span, .checkout-cart-index .cart-table.data-table .button2.btn-empty span, .product-view .add-to-cart .qty-wrapper .qty, .customer-account .my-account .dashboard .page-title h1, .cms-privacy-policy-cookie-restriction-mode h1, .cms-customer-service .page-title h1, .cms-customer-service .disc a, .cms-customer-service dl dt, .about_main > h4, .about_content h4, .services i, .catalog-product-view .product-view .availability.in-stock span, .catalog-category-view #narrow-by-list dt, a, h1, .h1, .block-title h2, .block-title h3, .block-title strong, .block-account li strong, .block-cms-menu li strong, .block-account li a:hover, .block-cms-menu li a:hover, .button2 span, .button2 span span, .breadcrumbs a:hover, .promo-msg, .btn-remove:after, .price-box .price, .price-box .minimal-price-link, .price-box .special-price, .pages a, .pages .current, #header-account a:hover, .footer .block-title, .footer address, .footer .links a:hover, h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.product-name a:hover, p.product-name a:hover, .product-view .product-shop .product-name .h1, .product-view .product-img-box .product-name h1, .product-view .product-shop .price-box .regular-price .price, .product-view .product-shop .price-box .special-price .price, .product-view .product-shop .price-box .full-product-price .price, .grouped-items-table .name-wrapper, .crosssell h2, .opc .section.allow .step-title:hover h2, .opc .section.active .step-title h2, .product-view .product-options .swatch-attr .select-label, #customer-reviews h2, #customer-reviews h3 span, #customer-reviews dl dd .review-meta, #wishlist-table .product-name a, #wishlist-table .giftregisty-add li, #wishlist-table .truncated .details, .header-minicart .product-details .product-name a, .header-minicart .info-wrapper td, .header-minicart .subtotal .price, .search-autocomplete ul li, .product-review .product-details h2, .cms-page-view .std h1, .cms-no-route .std h1, .cms-page-view .std h2, .cms-no-route .std h2 {
   color: #60a9dc;
+}
+.onestepcheckout-index-index  .onestepcheckout-login-link a, .onestepcheckout-index-index p.forgot-link a, .onestepcheckout-index-index  #onestepcheckout-forgot-table li.last p a {
+  color: #60a9dc !important;
 }
 .mp_quickview_icon, .button, .cart-table .product-cart-actions .button, #co-shipping-method-form .buttons-set .button, .footer .button,.add-to-links li a {
   background: #60a9dc;
 }
-.pages li, .minicart-wrapper .block-subtitle , .buttons-set .back-link, .footer_contact_container, .blog .blog_right, .blog_row2 .blog_left, .customer-account .back-link > a, .cms-home .category_navigation > li:first-child, .offer_price, .btn-previous:hover, .opc .section .step-title .number, .opc .section.allow.active .step-title .number, .no-touch .opc .section.allow:hover .step-title .number, .search-autocomplete ul li.selected {
+.catalogsearch-result-index .actions > a, .sales-order-print thead th, .pager.pager-no-toolbar, .sales-order-view .table-caption, .sales-order-view .order-info, .catalogsearch-advanced-index form h2, .sales-guest-view .order-info-box .box-title h2, .sales-guest-view .order-items.order-details h2, .sales-guest-form .page-title h1, form .legend, .contacts-index-index .wrapper .col-main .page-title h1, .catalog-seo-sitemap-category .page-sitemap .page-title h1, .catalog-seo-sitemap-product .page-sitemap .page-title h1, .checkout-cart-index #discount-coupon-form .discount .discount-form .field-wrapper .button-wrapper .button2, .checkout-cart-index .shipping .shipping-form .buttons-set button, #wishlist-table.clean-table thead th, .my-account form .control > label:hover, .my-account form .control > label, .customer-account .sidebar .actions > a, .sales-order-history .my-account .pager, .my-account form .fieldset h2, .my-account .box-account.box-info .box-head, .my-account .box-account.box-recent .box-head, .customer-address-index .my-account .addresses-list div > h2, .pages li, .minicart-wrapper .block-subtitle , .buttons-set .back-link, .footer_contact_container, .blog .blog_right, .blog_row2 .blog_left, .customer-account .back-link > a, .cms-home .category_navigation > li:first-child, .offer_price, .btn-previous:hover, .opc .section .step-title .number, .opc .section.allow.active .step-title .number, .no-touch .opc .section.allow:hover .step-title .number, .search-autocomplete ul li.selected {
   background-color: #60a9dc;
+}
+.onestepcheckout-index-index #onestepcheckout-forgot-table #onestepcheckout-return-login-link span, p.forgot-link #onestepcheckout-forgot-password-link span, .onestepcheckout-index-index #onestepcheckout-login-link > span, .onestepcheckout-index-index .one-step-checkout h3, #onestepcheckout-login-popup-contents-login > h1, #onestepcheckout-login-form button#onestepcheckout-login-button, #onestepcheckout-login-popup-contents-forgot > h1, #onestepcheckout-forgot-form button#onestepcheckout-forgot-button {
+  background-color: #60a9dc !important; 
 }
 .btn-remove:hover,.btn-remove:hover::after, .btn-previous:hover, #narrow-by-list dd .swatch-link:hover .swatch-label, .configurable-swatch-list .hover .swatch-link, .configurable-swatch-list .selected .swatch-link, .swatch-link:hover {
   border-color: #60a9dc;
 }
 .truncated .truncated_full_value .item-options, .pages .next:hover, .pages .previous:hover, .input-text:focus, #wishlist-table textarea:focus, .search-autocomplete ul {
   border: 1px solid #60a9dc;
+}
+.checkout-cart-index .cart-table.data-table .button2.btn-empty, .checkout-cart-index .cart-table.data-table .button2.btn-update, .checkout-cart-index .cart-table.data-table .button2.btn-continue {
+  border: 2px solid #60a9dc;
 }
 .services i {
   border: 3px solid #60a9dc;
@@ -10445,9 +10432,9 @@ body {
   margin: 0;
   padding: 15px 1px 15px 30px;
   border-bottom: 1px solid #ededed;
-  background-color: #656464;
+  /*background-color: #656464;*/
 }
-.buttons-set .back-link > a, .review-product-list .back-link > a, .checkout-cart-index .cart-forms button > span span, .newsletter-manage-index .form-list .control > label, .customer-account .back-link > a, .customer-account-edit .my-account form .control > label, .customer-account h2, .catalogsearch-advanced-index h2, .sales-guest-form h1, .catalog-seo-sitemap-product h1, .catalog-seo-sitemap-category h1, .contacts-index-index h1, header #search_mini_form i, .footer_block h2, .footer_copyright, .cms-home .category_navigation > li:first-child a, .mp_quickview_icon span {
+#wishlist-table.clean-table thead th, .customer-account .box-head > a, .cms-home .parentMenu.menu0 > a, .buttons-set .back-link > a, .review-product-list .back-link > a, .checkout-cart-index .cart-forms button > span span, .newsletter-manage-index .form-list .control > label, .customer-account .back-link > a, .customer-account-edit .my-account form .control > label, .customer-account h2, .catalogsearch-advanced-index h2, .sales-guest-form h1, .catalog-seo-sitemap-product h1, .catalog-seo-sitemap-category h1, .contacts-index-index h1, header #search_mini_form i, .footer_block h2, .footer_copyright, .cms-home .category_navigation > li:first-child a, .mp_quickview_icon span {
   color: #fff;
 }
 #narrow-by-list .title {
@@ -10457,7 +10444,7 @@ body {
   background-color: #f6f4f5;
 }
 .customer-account .scaffold-form, .sales-guest-form .col1-layout .col-main, .advanced-search, .catalog-seo-sitemap-category .page-sitemap, .catalog-seo-sitemap-product .page-sitemap, .contacts-index-index .col2-left-layout .col-main {
-  background: #f4f4f4 none repeat scroll 0 0;
+  background: #f6f4f5 none repeat scroll 0 0;
   border: 1px solid #ededed;
   padding: 0;
 }
@@ -10490,15 +10477,18 @@ body {
 }
 
 /* Hover Color */
- .product-collateral .toggle-tabs li.current > span, a:hover, .search-autocomplete ul li:hover, .services .services_link a, .header-language-container .header_left i  {
+.checkout-cart-index .cart-table.data-table .button2.btn-continue:hover span, .checkout-cart-index .cart-table.data-table .button2.btn-update:hover span, .checkout-cart-index .cart-table.data-table .button2.btn-empty:hover span, .customer-account .box-head > a:hover, .product-collateral .toggle-tabs li.current > span, a:hover, .search-autocomplete ul li:hover, .services .services_link a, .header-language-container .header_left i  {
  color: #ea4c89;
  text-decoration: none;
 }
 .button:hover, .cart-table .product-cart-actions .button:hover, #co-shipping-method-form .buttons-set .button:hover, .footer .button:hover,.add-to-links li a:hover {
   background: #ea4c89;
 }
-.new-products .product-carousel .item:hover .offer_price, .cms-home .category-products .category-carousel .item:hover .offer_price, .catalog-category-view li.item:hover .offer_price, header #search_mini_form .button.search-button, .block-layered-nav .block-subtitle--filter:hover, .slideshow-pager span:hover:before, .catalog-category-view .products-grid li.item:hover .offer_price {
+.catalogsearch-result-index .actions > a:hover, .customer-account .actions > a:hover, .buttons-set .back-link:hover, .buttons-set .back-link:hover a, .cms-home .parentMenu.menu0 a, .new-products .product-carousel .item:hover .offer_price, .cms-home .category-products .category-carousel .item:hover .offer_price, .catalog-category-view li.item:hover .offer_price, header #search_mini_form .button.search-button, .block-layered-nav .block-subtitle--filter:hover, .slideshow-pager span:hover:before, .catalog-category-view .products-grid li.item:hover .offer_price {
   background-color: #ea4c89;
+}
+.checkout-cart-index #discount-coupon-form button:hover, .checkout-cart-index .shipping button:hover {
+  background-color: #ea4c89 !important;
 }
 .slideshow-prev:hover:before {
   border-color: transparent #ea4c89 transparent transparent;
@@ -10509,9 +10499,9 @@ body {
 .header-language-container .header_left i {
   border: 1px solid #ea4c89;
 }
-/*.product-collateral .toggle-tabs li.current {
-  border-left: 10px solid #ea4c89;
-}*/
+.checkout-cart-index .cart-table.data-table .button2.btn-empty:hover, .checkout-cart-index .cart-table.data-table .button2.btn-update:hover, .checkout-cart-index .cart-table.data-table .button2.btn-continue:hover {
+  border: 2px solid #ea4c89;
+}
 
 /*color*/
 .header-minicart1 .cart_icon i, .cms-home .category_navigation > li a, .new-products .product-name > a, .new-products .title > h2, .catalog-product-view .product-view .product-name .h1, .catalog-category-view .products-grid .product-name > a, .services h6, .services_link a, .catalog-category-view #products-list .product-name > a {
@@ -10630,8 +10620,19 @@ body {
 .header-language-container .store-language-container {
   float: left;
 }
-.header_right .store-language-container select {
+.header_right .store-language-container select:hover, .header_right .currency-switcher select:hover, .header_right a.skip-link:hover {
   color: #417da7;
+  background-image: url("../images/shoestore/arrow-hover.png");
+}
+.header_right .store-language-container select, .header_right .currency-switcher select, .header_right a.skip-link, #header-search1 #cat {
+  background-image: url("../images/shoestore/arrow.png");
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  padding-right: 15px;
+}
+.header-language-container .header_right a.skip-link.skip-account {
+  background-position: 90% 50%;
+  padding-right: 25px;
 }
 /*Header*/
 header #search_mini_form .button.search-button {
@@ -10661,8 +10662,9 @@ header #search_mini_form i {
   color: #626161;
   height: 35px;
   text-transform: capitalize;
-  padding: 0 15px;
+  padding: 0 22px 0 15px;
   float: left;
+  background-position: 93% 50%;
 }
 @media only screen and (max-width: 480px) {
 #header #search_mini_form select {
@@ -10699,6 +10701,9 @@ header #search_mini_form i {
   max-width: 1920px;
   padding: 0 45px;
 }
+div.menu a i {
+  padding-left: 5px;
+}
 .top_header {
   position: relative;
 }
@@ -10717,12 +10722,6 @@ header #search_mini_form i {
 .top_header #header-search1 form {
   padding-top: 35px;
 }
-/*.top_header .header-minicart1 {
-  position: absolute;
-  right: 50px;
-  top: 35%;
-  padding-right: 10px;
-}*/
 .top_header .header-minicart1 {
   padding-right: 10px;
   position: absolute;
@@ -10757,15 +10756,12 @@ body.cms-home .main-container {
 .header-minicart1 .cart_icon i {
   background-color: transparent;
 }
-/*.header-minicart1 .skip-link.skip-cart {
-  border: 1px solid #dedede;
-}*/
 .header-minicart1 .skip-link.skip-cart {
   border: 1px solid #dedede;
   position: absolute;
   right: 10px;
   top: 0;
-  min-width: 181px;
+  min-width: 187px;
 }
 .page-header-container .header-minicart, .page-header-container .logo, .page-header-container #header-search {
   display: none;
@@ -10786,21 +10782,25 @@ body.cms-home .main-container {
   max-width: 222px;
   width: 232px;
 }
+.header_right .store-language-container select, .header_right .currency-switcher select, .header_right a.skip-link span {
+  font-size: 10px;
+}
+#custommenu-mobile > #menu-button {
+  display: block;
+}
+#custommenu-mobile #menu-button > a {
+  background-color: #60a9dc;
+  padding: 10px 30px;
+}
 }
 @media only screen and (max-width: 1300px) {
-div.menu a:link, div.menu a:visited {
-  padding: 0 25px;
+div.menu {
+  font-size: 0.8em;
 }
 }
 @media only screen and (max-width: 991px) {
-div.menu a:link, div.menu a:visited {
-  padding: 0 15px;
-}
 .top_header #header-search1 {
   width: 550px;
-}
-div.menu {
-  font-size: 13px;
 }
 }
 @media only screen and (max-width: 900px) {
@@ -10828,6 +10828,7 @@ div.menu {
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: normal;
 }
 .services h6, .services_link a {
   font-size: 1em;
@@ -10855,6 +10856,8 @@ div.menu {
   font-size: 2.126em;
   margin: 0 auto 16px;
   padding: 19px;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 .services_link {
   text-align: center;
@@ -11161,6 +11164,10 @@ nav::after {
   position: absolute;
   top: 50%;
 }
+.brand_img > a img:hover {
+  transform: scale(1.1);
+  transition: all 1s ease-in-out 0s;
+}
 .brands ul li:nth-child(4n) {
   border-right: 0 none;
 }
@@ -11220,6 +11227,13 @@ nav::after {
 }
 .advertisement img {
   max-width: 100%;
+  transition: all 1s ease-in-out 0s;
+}
+.advertisement_block2 img {
+  margin-bottom: 1px;
+}
+.advertisement img:hover {
+  transform: scale(0.9);
 }
 @media only screen and (max-width: 767px) {
 .advertise_container {
@@ -11497,6 +11511,9 @@ nav::after {
 .pages .next.i-next, .toolbar .previous.i-previous {
   font-size: 0;
 }
+.catalogsearch-result-index .block-content .actions a {
+  padding: 5px 20px;
+}
 @media only screen and (max-width: 767px) {
 .category-products .toolbar .sorter {
   width: 80%;
@@ -11568,7 +11585,6 @@ nav::after {
   margin: 0 auto;
   position: absolute;
   right: 0;
-  width: 65%;
 }
 .catalog-category-view .products-grid .product-image, .catalogsearch-result-index .products-grid .product-image {
   height: 250px;
@@ -11828,7 +11844,7 @@ nav::after {
 .addthis_toolbox, .product-view .product-img-box .more-views h2, .breadcrumbs {
   display: none;
 }
-.new-products li .product-info .price-box .price, .catalog-product-view .product-view .price-info .price, .catalog-product-view .product-view .availability.in-stock span {
+.review-product-list .product-view .price-info .price, .new-products li .product-info .price-box .price, .catalog-product-view .product-view .price-info .price, .catalog-product-view .product-view .availability.in-stock span {
   font-weight: bold;
 }
 .catalog-product-view .product-view .add-to-links li a {
@@ -11837,7 +11853,7 @@ nav::after {
 .catalog-product-view .product-view .add-to-links li a i {
   font-size: 16px;
 }
-.catalog-product-view .product-view .product-name .h1, .catalog-product-view .product-view .price-info .price {
+.review-product-list .product-view .product-name .h1, .catalog-product-view .product-view .product-name .h1, .catalog-product-view .product-view .price-info .price {
   font-size: 2em;
 }
 .catalog-product-view .product-view .price-info .price {
@@ -11900,6 +11916,19 @@ nav::after {
 .review-product-list .add-to-links i {
   font-size: 15px;
 }
+.review-product-list .product-view .product-image.product-image-zoom {
+  width: 100%;
+}
+.review-product-list .buttons-set a {
+  padding: 0 38px;
+}
+@media only screen and (max-width: 770px) {
+.review-product-list .product-view .product-image.product-image-zoom {
+  float: none;
+  margin: 0 auto;
+  width: 70%;
+}
+}
 /*Related Products*/
 .product-view .block.block-related {
   clear: both;
@@ -11908,11 +11937,6 @@ nav::after {
   width: 100%;
 }
 /*About US page*/
-/*.customer-account-forgotpassword .main-container, .cms-no-route .main-container, .review-product-list .main-container, .customer-account-create .main-container, .customer-account-login .main-container, .onestepcheckout-index-index .main-container, .checkout-cart-index .main-container, .customer-account .main-container, .catalogsearch-term-popular .main-container, .sales-guest-form .main-container,  .catalogsearch-advanced-index .main-container, .catalog-seo-sitemap-category .main-container, .catalog-seo-sitemap-product .main-container, .cms-about-magento-demo-store .main-container.col1-layout, .cms-customer-service .main-container.col1-layout, .cms-privacy-policy-cookie-restriction-mode .main-container.col1-layout, .contacts-index-index .main-container.col1-layout {
-  margin: 0 auto;
-  max-width: 1260px;
-  padding: 30px;
-}*/
 .cms-home .main-container, .catalog-category-view .main-container, .catalog-product-view .main-container, .catalogsearch-result-index .main-container {
   margin: 0 auto;
   max-width: 1920px;
@@ -11996,7 +12020,7 @@ nav::after {
 }
 .contacts-index-index #contactForm {
   padding: 30px;
-  background-color: #f4f4f4;
+  background-color: #f6f4f5;
 }
 .contacts-index-index form p.required {
   float: inherit;
@@ -12154,9 +12178,10 @@ nav::after {
 }
 .block .minicart-wrapper .mini-products-list li {
   border-bottom: 1px solid #e2e0e0 !important;
+  padding-bottom: 30px;
 }
 #cart-sidebar .button.quantity-button.visible {
-  margin-top: -2px;
+  margin-top: 8px;
   padding: 0 20px;
 }
 .minicart-wrapper li .product-name {
@@ -12171,7 +12196,7 @@ nav::after {
 .mini-products-list .product-image {
   border: 1px solid #cfd0d0;
   padding: 7px;
-  margin-left: 15px;
+  /*margin-left: 15px;*/
   margin-right: 20px;
 }
 .mini-products-list li .product-details .product-name > a {
@@ -12203,9 +12228,6 @@ nav::after {
 .product-details .remove {
   color: #c08144;
 }
-.product-details .btn-edit {
-  margin-left: 35px;
-}
 .block-content .subtotal .label {
   color: #605e5e !important;
   font-size: 15px;
@@ -12233,7 +12255,7 @@ nav::after {
   margin-bottom: 10px;
 }
 /*Create User*/
-.customer-account-create .fieldset p.required, .customer-account-login .fieldset p.required {
+.customer-account-create .fieldset p.required, .customer-account-login .fieldset p.required, .checkout-multishipping-login .fieldset p.required {
   float: inherit;
 }
 .customer-account-create .buttons-set .back-link a {
@@ -12260,6 +12282,9 @@ nav::after {
 }
 .customer-account-index .col-main {
   float: right;
+}
+.customer-account .actions button.button {
+  margin-bottom: 10px;
 }
 .pager.pager-no-toolbar {
   color: #ffffff;
@@ -12290,7 +12315,7 @@ td em, .box .box-content p, .box .box-content address {
   padding-bottom: 10px;
 }
 .sales-order-history .my-account .pager, .my-account form .fieldset h2, .my-account .box-account.box-info .box-head, .my-account .box-account.box-recent .box-head, .customer-address-index .my-account .addresses-list div > h2 {
-  background-color: #656464;
+  /*background-color: #656464;*/
   font-weight: 600;
   padding: 14px;
 }
@@ -12298,9 +12323,9 @@ td em, .box .box-content p, .box .box-content address {
   margin: 0;
   padding: 0;
   width: 100%;
+  position: inherit;
 }
 .sales-order-history .my-account .pager > .count-container {
-  float: right;
   padding: 4px 10px;
   vertical-align: middle;
 }
@@ -12325,8 +12350,12 @@ td em, .box .box-content p, .box .box-content address {
   padding: 10px 35px;
   width: 425px;
 }
-.my-account form .control > label:hover, .my-account form .control > label {
-  background-color: #898585;
+.sales-order-history .pager .limiter {
+  float: none;
+  text-align: right;
+}
+.sales-order-history .pager .limiter > select {
+	padding: 0 10px;
 }
 #wishlist-table .item-manage .btn-cart:hover, .aboutus-right > a, .home-new_offer, .featured-sale, .buttons-set .button.btn-update.button-secondary, button.btn-proceed-checkout.btn-checkout, .shipping-form form .buttons-set button.button, .cart-cell .button.btn-cart, .clean-table.linearize-table a.link-edit, .my-account .back-link, .block-content .actions button.button, .block-content .actions button.button:hover, .block-content .actions a, .my-account form .buttons-set .button {
   color: #ffffff !important;
@@ -12389,7 +12418,7 @@ td em, .box .box-content p, .box .box-content address {
   padding: 20px;
 }
 .sales-order-print tbody td, .sales-order-print .order-date, .sales-order-view .order-items.order-details .data-table th, .sales-order-view .order-date, .data-table.orders thead tr th {
-  background: none repeat scroll 0 0 #dad7d7;
+  background: none repeat scroll 0 0 #f6f4f5;
   font-size: 13px;
   font-weight: 600;
   vertical-align: middle;
@@ -12453,7 +12482,7 @@ td em, .box .box-content p, .box .box-content address {
   font-size: 14px;
 }
 .customer-address-index .my-account .addresses-list div > ol li h3 {
-  background-color: #DAD7D7;
+  background-color: #f6f4f5;
   font-weight: 600;
   padding: 14px;
 }
@@ -12471,6 +12500,11 @@ td em, .box .box-content p, .box .box-content address {
 .customer-account .col-left.sidebar {
   float: left;
   width: 100%;
+}
+}
+@media only screen and (max-width: 480px) {
+.sales-order-history .pager .limiter > select {
+  display: block;
 }
 }
 @media only screen and (max-width: 425px) {
@@ -12542,9 +12576,6 @@ td em, .box .box-content p, .box .box-content address {
   height: 37px;
   width: 240px;
 }
-.checkout-cart-index #discount-coupon-form .discount .discount-form .field-wrapper .button-wrapper .button2, .checkout-cart-index .shipping .shipping-form .buttons-set button {
-  background-color: #ce8745;
-}
 .checkout-cart-index .shipping .form-list .shipping-postcode {
   margin-right: 0;
 }
@@ -12603,6 +12634,9 @@ td em, .box .box-content p, .box .box-content address {
 .checkout-cart-index #shopping-cart-table td.a-right.cart-footer-actions.last {
   padding-top: 25px;
 }
+.checkout-cart-index #shopping-cart-table td.a-right {
+  position: relative;
+}
 .checkout-cart-index .cart-totals-wrapper .cart-totals {
   padding: 25px 0 30px;
 }
@@ -12628,12 +12662,8 @@ td em, .box .box-content p, .box .box-content address {
   font-size: 16px;
 }
 .checkout-cart-index .cart-table.data-table .button2.btn-empty {
-  border: 2px solid #474646;
   border-radius: 5px;
   padding: 5px 30px;
-}
-.checkout-cart-index .cart-table.data-table .button2.btn-empty span {
-  color: #474646;
 }
 .checkout-cart-index .cart-table.data-table .button2.btn-empty span, .checkout-cart-index .cart-table.data-table .button2.btn-update span, .checkout-cart-index .cart-table.data-table .button2.btn-continue span {
   font-size: 14px;
@@ -12646,7 +12676,6 @@ td em, .box .box-content p, .box .box-content address {
 .checkout-cart-index .cart-table.data-table .button2.btn-update, .checkout-cart-index .cart-table.data-table .button2.btn-continue {
   background-position: 5% 50%;
   background-repeat: no-repeat;
-  border: 2px solid #38b5b6;
   border-radius: 5px;
   float: left;
   margin: 0 auto;
@@ -12667,10 +12696,6 @@ td em, .box .box-content p, .box .box-content address {
   background-image: url("images/arrow-orange.png");
   background-size: 8% auto;
   float: right;
-  border-color: #ce8745;
-}
-.checkout-cart-index .cart-table.data-table .button2.btn-continue span {
-  color: #ce8745;
 }
 .shipping-region .validation-advice {
   padding-left: 10px;
@@ -12681,6 +12706,12 @@ td em, .box .box-content p, .box .box-content address {
 @media only screen and (min-width: 1250px) {
 .checkout-cart-index #discount-coupon-form .field-wrapper, .checkout-cart-index .cart .giftcard .field-wrapper {
   padding-left: 18px;
+}
+.checkout-cart-index .cart-table.data-table .button2.btn-update {
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
 }
 }
 @media only screen and (max-width: 1250px) {
@@ -12845,15 +12876,28 @@ td em, .box .box-content p, .box .box-content address {
   padding: 11px 10px;
 }
 /*Empty cart/ Empty products*/
-.empty_cart_container, .empty_product_container {
+.empty_cart_container, .empty_product_container, .order_success_container {
   min-height: 450px;
 }
 .empty_cart, .empty_product_container .note-msg {
   left: 50%;
-  margin-left: -150px;
-  margin-top: -60px;
   position: absolute;
   top: 50%;
+}
+.empty_cart, .empty_product_container .note-msg {
+  margin-left: -150px;
+  margin-top: -60px;
+}
+.checkout-onepage-success .page-title {
+  text-align: left;
+}
+.order_success {
+  padding-top: 160px;
+}
+@media only screen and (max-width: 520px) {
+.order_success {
+  padding-top: 80px;
+}
 }
 /*Chrome*/
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
@@ -12872,8 +12916,13 @@ td em, .box .box-content p, .box .box-content address {
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) and (min-width: 771px) { 
 #header #search_mini_form select {
-    padding: 0;
+    padding: 0 19px 0 12px;
     border-right: 0;
+}
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-width: 1250px) {
+.checkout-cart-index .cart-table.data-table .button2.btn-update {
+  left: 34%;
 }
 }
 /* Safari only override */
