@@ -102,7 +102,7 @@ class Abserve_CustomMenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         if ($drawPopup) {
             $htmlPopup = array();
             // --- Popup function for hide ---
-            $htmlPopup[] = '<div id="popup' . $id . '" class="abserve-custom-menu-popup animated zoomIn" onmouseout="abserveHideMenuPopup(this, event, \'popup' . $id . '\', \'menu' . $id . '\')" onmouseover="abservePopupOver(this, event, \'popup' . $id . '\', \'menu' . $id . '\')">';
+            $htmlPopup[] = '<div id="popup' . $id . '" class="abserve-custom-menu-popup animated pulse" onmouseout="abserveHideMenuPopup(this, event, \'popup' . $id . '\', \'menu' . $id . '\')" onmouseover="abservePopupOver(this, event, \'popup' . $id . '\', \'menu' . $id . '\')">';
             // --- draw Sub Categories ---
             if (count($activeChildren)) {
                 $columns = (int)Mage::getStoreConfig('custom_menu/columns/count');
