@@ -1,0 +1,83 @@
+/*About Us*/
+.home-aboutus, .cms-home .category_all_list, .page_content_home .featured-products.clearfix {
+  margin: 0 auto;
+  max-width: 1260px;
+}
+.home-aboutus {
+  border-bottom: 1px solid #ecebeb;
+  clear: both;
+  padding-top: 40px;
+}
+.aboutus-left {
+  float: left;
+  max-width: 100%;
+  padding: 10px 5% 0;
+}
+.aboutus-left > img {
+  width: 320px;
+}
+.aboutus-right {
+  padding: 0 1% 0 6%;
+}
+.aboutus-right > a:hover, .offer-right > a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+.aboutus-right > h2, .offer-right > h2 {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+.aboutus-right > h2 {
+  color: #323a45;
+  margin-bottom: 25px;
+  padding-top: 25px;
+  text-transform: capitalize;
+}
+.home-aboutus .aboutus-right > p {
+  color: #000000;
+  font-size: 14px;
+  line-height: 35px;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+.aboutus-right > a, .offer-right > a {
+  border-radius: 2px;
+  display: table;
+  float: none;
+  font-size: 16px;
+  padding: 15px 35px;
+  text-decoration: none;
+}
+.aboutus-right > a {
+  color: #ffffff;
+  margin: 0 auto 35px;
+}
+.aboutus-right > a:hover {
+  color: #ffffff;
+}
+@media screen and (max-width: 1100px) {
+.aboutus-right {
+  padding: 0 5% 0 6%;
+}
+}
+@media screen and (max-width: 991px) {
+.aboutus-left {
+  display: table;
+  float: none;
+  margin: 0 auto;
+}
+.home-aboutus .aboutus-right > p {
+  text-align: justify;
+}
+}
+@media screen and (max-width: 767px) {
+.aboutus-left {
+  width: 100%;
+}
+.aboutus-left > img {
+  width: 60%;
+  margin: 0 auto;
+}
+}
+/*About Us end*/

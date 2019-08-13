@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Abserve
+ * @package     Abserve_Module
+ * @author      Abserve Developer
+ * @license     http://abservetech.com/license-agreement/
+ * @copyright   Copyright (c) 2015 abservetech (http://abservetech.com)
+ */
+-->
+<config>
+    <modules>
+        <Abserve_PaypalBNCode>
+            <version>0.1.0</version>
+        </Abserve_PaypalBNCode>
+    </modules>
+    <global>
+        <models>
+            <paypalbncode>
+                <class>Abserve_PaypalBNCode_Model</class>
+            </paypalbncode>
+            <paypal>
+                <rewrite>
+                    <config>Abserve_PaypalBNCode_Model_Config</config>
+                </rewrite>
+            </paypal>			
+        </models>
+        <helpers>
+            <paypalbncode>
+                <class>Abserve_PaypalBNCode_Helper</class>
+            </paypalbncode>
+        </helpers>
+    </global>
+</config>

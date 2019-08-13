@@ -1,0 +1,138 @@
+<?php
+/**
+ * @category    Abserve
+ * @package     Abserve_Module
+ * @author      Abserve Developer
+ * @license     http://abservetech.com/license-agreement/
+ * @copyright   Copyright (c) 2015 abservetech (http://abservetech.com)
+ */
+?>
+<?php
+class Abserve_Catalog_Model_Convert_Adapter_Category
+    extends Mage_Eav_Model_Convert_Adapter_Entity
+{
+    protected $_categoryCache = array();
+
+    protected $_stores;
+
+    protected $_displayModes = array( 'PRODUCTS', 'PAGE', 'PRODUCTS_AND_PAGE');
+
+    public function parse()
+    {
+        $batchModel = Mage::getSingleton('dataflow/batch');
+        
+        $batchImportModel = $batchModel->getBatchImportModel();
+        $importIds = $batchImportModel->getIdCollection();
+
+        foreach ($importIds as $importId) {
+        
+            $batchImportModel->load($importId);
+            $importData = $batchImportModel->getBatchData();
+
+            $this->saveRow($importData);
+        }
+    }
+
+    public function saveRow(array $importData)
+    {
+        if (empty($importData['store'])) {
+            if (!is_null($this->getBatchParams('store'))) {
+                $store = $this->getStoreById($this->getBatchParams('store'));
+            } else {
+                $message = Mage::helper('catalog')->__('Skip import row, required field "%s" not defined', 'store');
+                Mage::throwException($message);
+            }
+        } else {
+            $store = $this->getStoreByCode($importData['store']);
+        }
+
+        if ($store === false) {
+            $message = Mage::helper('catalog')->__('Skip import row, store "%s" field not exists', $importData['store']);
+            Mage::throwException($message);
+        }
+
+        $rootId = $store->getRootCategoryId();
+        if (!$rootId) {
+            return array();
+        }
+        $rootPath = '1/'.$rootId;
+        if (empty($this->_categoryCache[$store->getId()])) {
+            $collection = Mage::getModel('catalog/category')->getCollection()
+                ->setStore($store)
+                ->addAttributeToSelect('name');
+            $collection->getSelect()->where("path like '".$rootPath."/%'");
+
+            foreach ($collection as $cat) {
+                $pathArr = explode('/', $cat->getPath());
+                $namePath = '';
+                for ($i=2, $l=sizeof($pathArr); $i<$l; $i++) {
+                    $name = $collection->getItemById($pathArr[$i])->getName();
+                    $namePath .= (empty($namePath) ? '' : '/').trim($name);
+                }
+                $cat->setNamePath($namePath);
+            }
+
+            $cache = array();
+            foreach ($collection as $cat) {
+                $cache[strtolower($cat->getNamePath())] = $cat;
+                $cat->unsNamePath();
+            }
+            $this->_categoryCache[$store->getId()] = $cache;
+        }
+        $cache =& $this->_categoryCache[$store->getId()];
+
+        $importData['categories'] = preg_replace('#\s*/\s*#', '/', trim($importData['categories']));
+        if (!empty($cache[$importData['categories']])) {
+            return true;
+        }
+
+        $path = $rootPath;
+        $namePath = '';
+
+        $i = 1;
+        $categories = explode('/', $importData['categories']);
+        foreach ($categories as $catName) {
+            $namePath .= (empty($namePath) ? '' : '/').strtolower($catName);
+            if (empty($cache[$namePath])) {
+
+                $dispMode = $this->_displayModes[2];
+
+                $cat = Mage::getModel('catalog/category')
+                    ->setStoreId($store->getId())
+                    ->setPath($path)
+                    ->setName($catName)
+                    ->setIsActive(1)
+                    ->setIsAnchor(1)
+                    ->setDisplayMode($dispMode)
+                    ->save();
+                $cache[$namePath] = $cat;
+            }
+            $catId = $cache[$namePath]->getId();
+            $path .= '/'.$catId;
+            $i++;
+        }
+
+        return true;
+    }
+
+    public function getStoreByCode($store)
+    {
+        $this->_initStores();
+        if (isset($this->_stores[$store])) {
+            return $this->_stores[$store];
+        }
+        return false;
+    }
+
+    protected function _initStores ()
+    {
+        if (is_null($this->_stores)) {
+            $this->_stores = Mage::app()->getStores(true, true);
+            foreach ($this->_stores as $code => $store) {
+                $this->_storesIdCode[$store->getId()] = $code;
+            }
+        }
+    }
+}
+
+?>

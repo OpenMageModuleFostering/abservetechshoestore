@@ -1,0 +1,33 @@
+<?php
+/**
+ * @category    Abserve
+ * @package     Abserve_Module
+ * @author      Abserve Developer
+ * @license     http://abservetech.com/license-agreement/
+ * @copyright   Copyright (c) 2015 abservetech (http://abservetech.com)
+ */
+?>
+<ul id="postcode_autocomplete">
+<?php foreach ($items as $item): ?>
+    <li id="<?php echo $item['id'] ?>" postcode="<?php echo $item['postcode']?>" country= "<?php echo $item['country']?>" city="<?php echo $item['city'] ?>" region="<?php echo $item['region']?>" region_id="<?php echo $item['region_id']?>">
+		<div style="float:left">
+			<?php if($item['city']):?>
+				<strong><?php echo $this->htmlEscape($item['city']) ?></strong><br/>
+			<?php endif;?>
+			<?php if($item['postcode']):?>
+				<span class="informal"><?php echo $this->htmlEscape($item['postcode']) ?></span><br/>
+			<?php endif;?>
+			<?php if($item['region']):?>
+				<span class="informal"><?php echo '('.$this->htmlEscape($item['region']).')' ?></span>
+			<?php endif;?>
+		</div>
+        <div style="float:right; clear:both; color:red; font-weight:bold;">[<?php echo $item['country'] ?>]</div>
+    </li>
+<?php endforeach ?>
+</ul>
+<style type="text/css">
+	#postcode_autocomplete li:hover{
+		background-color: #DCEBF0;
+		cursor: pointer;
+	}
+</style>

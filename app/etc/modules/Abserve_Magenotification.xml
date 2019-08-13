@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Abserve_Magenotification>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Abserve_Magenotification>
+    </modules>
+</config> 

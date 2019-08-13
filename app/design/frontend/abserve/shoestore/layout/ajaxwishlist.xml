@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Abserve
+ * @package     Abserve_Module
+ * @author      Abserve Developer
+ * @license     http://abservetech.com/license-agreement/
+ * @copyright   Copyright (c) 2015 abservetech (http://abservetech.com)
+ */
+-->
+<layout version="0.1.0">
+   <catalog_product_view>
+   		<reference name="head">            
+            <action method="addItem"><type>js</type><name>jquery/jquery-ui.js</name></action>
+            <action method="addItem"><type>js</type><name>jquery/noconflict.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/ajaxwishlist/ajaxwishlist.js</name></action>
+        </reference>
+	   	<reference name='product.info.addto'>
+	   		<action method='setTemplate'><template>ajaxwishlist/catalog/product/view/addto.phtml</template></action>
+	   	</reference>
+   </catalog_product_view>
+   <catalog_category_default>
+   		<reference name="head">
+            <action method="addItem"><type>js</type><name>jquery/jquery-ui.js</name></action>
+            <action method="addItem"><type>js</type><name>jquery/noconflict.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/ajaxwishlist/ajaxwishlist.js</name></action>
+        </reference>
+    	<reference name='product_list'>
+    		<action method='setTemplate'><template>ajaxwishlist/catalog/product/list.phtml</template></action>
+    	</reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+    	<reference name="head">
+            <action method="addItem"><type>js</type><name>jquery/jquery-ui.js</name></action>
+            <action method="addItem"><type>js</type><name>jquery/noconflict.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/ajaxwishlist/ajaxwishlist.js</name></action>
+        </reference>
+    	<reference name='product_list'>
+    		<action method='setTemplate'><template>ajaxwishlist/catalog/product/list.phtml</template></action>
+    	</reference>
+    </catalog_category_layered>
+</layout> 

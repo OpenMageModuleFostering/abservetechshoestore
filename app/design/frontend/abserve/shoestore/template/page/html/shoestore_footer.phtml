@@ -1,0 +1,92 @@
+<!-- <div class="newssuscribe clearfix">
+<?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe_footer.phtml')->toHtml(); ?>
+</div> -->
+<?php 
+	$facebook = Mage::getStoreConfig('settings/general/facebook');
+	$gplus = Mage::getStoreConfig('settings/general/gplus');
+	$linkedin = Mage::getStoreConfig('settings/general/linkedin');
+	$twitter = Mage::getStoreConfig('settings/general/twitter');
+
+
+	$address = Mage::getStoreConfig('settings/contactus/address');
+	$telephoneno = Mage::getStoreConfig('settings/contactus/telephoneno');
+	$mobileno = Mage::getStoreConfig('settings/contactus/mobileno');
+	$contactmail = Mage::getStoreConfig('settings/contactus/contactmail');
+
+	$copyrights = Mage::getStoreConfig('settings/general/copyrights');
+
+?>
+<div class="footer_contact_container clearfix">
+	<div class="footer_contact">
+		<div class="call">
+			<i class="fa fa-phone"></i>
+			<a href="skype:vinothabserve?call">
+				<p class="text1">(1800) 1234 5678</p>
+				<p class="text2">Give a call to talk with us</p>
+			</a>			
+		</div>
+		<div class="chat">
+			<i class="fa fa-headphones"></i>
+			<p class="text1">Chat with us</p>
+			<p class="text2">Want to text us chat here</p>
+		</div>
+		<div class="subscribe">
+			<i class="fa fa-envelope"></i>
+			<!-- <p class="text1">Newsletter Subscription</p>
+			<p class="text2">Subscribe us to get daily updates</p> -->
+			<div class="newssuscribe clearfix">
+				<?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe_footer.phtml')->toHtml(); ?>
+			</div>
+		</div>
+		
+	</div>	
+</div>
+<div class="footer_container">
+	<div class="footer_block clearfix">
+		<div Class="footer_social">
+			<h2>Follow Us</h2>
+			<ul>
+				<li><a href="http://www.facebook.com/<?php echo $facebook; ?>"><i class="fa fa-facebook"></i>Facebook</a></li>
+				<li><a href="https://twitter.com/<?php echo $twitter; ?>"><i class="fa fa-twitter"></i>Twitter</a></li>
+				<li><a href="https://www.linkedin.com/in/<?php echo $linkedin; ?>"><i class="fa fa-linkedin"></i>Linkedin</a></li>
+				<li><a href="https://google.com/<?php echo $gplus; ?>"><i class="fa fa-google-plus"></i>Google Plus</a></li>
+			</ul>
+		</div>
+
+		<div Class="footer_pages">
+			<h2>Information</h2>
+			<ul>
+				<li><a href="http://192.168.1.11/shoestore/">Home</a></li>
+				<li><a href="http://192.168.1.11/shoestore/about-magento-demo-store/">About Us</a></li>
+				<li><a href="http://192.168.1.11/shoestore/contacts">Contact US</a></li>
+				<li><a href="http://192.168.1.11/shoestore/privacy-policy-cookie-restriction-mode/">Privacy Policy</a></li>
+				<li><a href="http://192.168.1.11/shoestore/customer-service/">Customer Service</a></li>
+			</ul>
+		</div>
+
+		<div Class="footer_location">
+			<h2>Location</h2>
+			<ul>
+				<li><a href="javascript:void(0)"><i class="fa fa-map-marker"></i><?php echo $address; ?></a></li>
+				<li><a href="javascript:void(0)"><i class="fa fa-mobile"></i><?php echo $mobileno; ?></a></li>
+				<li><a href="javascript:void(0)"><i class="fa fa-phone"></i><?php echo $telephoneno; ?></a></li>
+				<li><a href="mailto:abservetech@gmail.com" style="text-transform: lowercase;"><i class="fa fa-envelope"></i><?php echo $contactmail; ?></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer_copyright">		
+		<?php echo $copyrights; ?>	
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

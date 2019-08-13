@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/AbservetechShoestore",
+    "type": "magento-module",
+    "license": "Open-Software-License-(OSL)",
+    "homepage": "",
+    "description": "Shoe store  Responsive Free Theme",
+    "authors": [
+    {
+        "name": "AbserveTech",
+        "email": "support@abservetech.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

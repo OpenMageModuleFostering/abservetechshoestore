@@ -1,0 +1,29 @@
+<?php
+/**
+ * @category    Abserve
+ * @package     Abserve_Module
+ * @author      Abserve Developer
+ * @license     http://abservetech.com/license-agreement/
+ * @copyright   Copyright (c) 2015 abservetech (http://abservetech.com)
+ */
+?>
+<div class="clearfix footer_subscribeusers">
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+        <div class="block-content">
+            <div class="form-subscribe-header">
+                <label for="newsletter"><?php echo $this->__('JOIN THE COMMUNITY TO GET UPDATED FIRST') ?></label>
+            </div>
+            <div class="input-box">
+               <input type="email" autocapitalize="off" autocorrect="off" placeholder="Enter your Email Address..." spellcheck="false" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" />
+            </div>
+            <div class="actions">
+                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button hvr-sweep-to-right"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    </script>
+</div>

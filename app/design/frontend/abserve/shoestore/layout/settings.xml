@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout> 
+<default> 
+<reference name="head">
+	<!-- <action method="addCss"><stylesheet>css/abserve/circle.css</stylesheet></action> -->
+	<action method="addItem">
+                <type>skin_css</type>
+                <name>owl-carousel/owl.carousel.css</name>
+            </action>
+
+        <action method="addItem">
+                <type>skin_css</type>
+                <name>owl-carousel/owl.theme.css</name>
+            </action>        
+            
+        <action method="addItem">
+                <type>skin_js</type>
+                <name>owl-carousel/owl.carousel.js</name>
+            </action>
+        <action method="addItem">
+                <type>skin_js</type>
+                <name>owl-carousel/owl.custom.js</name>
+            </action>
+
+        <!-- Tab Script -->
+        <action method="addItem">
+                <type>skin_css</type>
+                <name>tabscript/css/component.css</name>
+            </action> 
+        <action method="addItem">
+                <type>skin_js</type>
+                <name>tabscript/js/cbpFWTabs.js</name>
+            </action>
+        <!--End Tab Script -->
+
+        <action method="addItem">
+        	<type>skin_js</type>
+        	<name>js/ajaxwishlist/ajaxwishlist.js</name>
+        </action>
+
+
+
+</reference>
+
+</default>
+	<settings_index_index>		
+	    <reference name="content">
+	        <block type="catalog/product_list"
+	               name="test"
+	               template="settings/index.phtml" /> 
+	    </reference>
+	</settings_index_index>
+
+
+	<settings_index_banner>
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+		<reference name="content">
+	        <block type="settings/settings"
+	               name="settings_banner"
+	               template="settings/banner.phtml" /> 
+	    </reference>
+	</settings_index_banner>
+
+
+	<settings_index_blog>
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 		
+	    <reference name="content">
+	        <block type="settings/settings"
+	               name="abserve_blog"
+	               template="settings/blog.phtml" /> 
+	    </reference>
+	</settings_index_blog>
+
+	<settings_index_newproduct>	
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+	    <reference name="content">
+	        <block type="catalog/product_list"
+	               name="settings_newproduct"
+	               template="settings/newproduct.phtml" />                  
+	    </reference>
+	</settings_index_newproduct>
+
+	<settings_index_newproducthome>	
+
+
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+	    <reference name="content">
+	        <block type="catalog/product_list"
+	               name="settings_newproducthome"
+	               template="settings/newproduct_home.phtml" />                  
+	    </reference>
+	</settings_index_newproducthome>
+
+	<settings_index_category>	
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+        <reference name="head">
+        
+        </reference>
+	    <reference name="content">
+	        <block type="catalog/product_list"
+	               name="test"
+	               template="settings/categorylist.phtml" />                  
+	    </reference>
+	</settings_index_category>
+
+	<settings_index_categoryhome>	
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+        <reference name="head">
+        </reference>
+	    <reference name="content">
+	        <block type="catalog/product_list"
+	               name="categoryhome"
+	               template="settings/categorylist_home.phtml" />              
+	    </reference>
+	</settings_index_categoryhome>
+
+
+	<settings_index_categorytabs>	
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+        <reference name="head">
+        	<!-- <action method="addItem">
+                <type>skin_css</type>
+                <name>tabscript/css/component.css</name>
+            </action> 
+	        <action method="addItem">
+	                <type>skin_js</type>
+	                <name>tabscript/js/cbpFWTabs.js</name>
+	            </action> -->
+        </reference>
+	    <reference name="content">
+	            <block type="catalog/product_list"
+	               name="categorytabs"
+	               template="settings/tabs.phtml" />               
+	    </reference>
+	</settings_index_categorytabs>
+
+	<settings_index_delivery>	
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+        <reference name="head">
+        
+        </reference>
+	    <reference name="content">
+	        <block type="settings/settings"
+	               name="settings_delivery"
+	               template="settings/delivery.phtml" />                  
+	    </reference>
+	</settings_index_delivery>
+
+	
+
+	<settings_index_ad>	
+		<reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference> 
+        <reference name="head">
+        
+        </reference>
+	    <reference name="content">
+	        <block type="settings/settings"
+	               name="settings_ad"
+	               template="settings/ad.phtml" />                  
+	    </reference>
+	</settings_index_ad>
+
+	
+
+</layout>

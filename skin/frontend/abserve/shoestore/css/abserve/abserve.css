@@ -1,0 +1,92 @@
+/**
+* @category    Abserve
+* @package     Abserve_Module
+* @author      Abserve Developer
+* @license     http://abservetech.com/license-agreement/
+* @copyright   Copyright (c) 2015 abservetech (http://abservetech.com)
+*/
+
+div .block-title {
+  border-top: none;
+}
+.product-view form .product-shop .price-info {
+  clear: left;
+  float: left;
+  padding: 0;
+}
+.addthis_toolbox {
+  clear: both;
+  margin: 15px 0;
+}
+/* Abserve Banner*/
+.pika-stage {
+  height: auto !important;
+}
+/* Mega Menu */
+#custommenu div.abserve-custom-menu-popup {
+  background-color: #ffffff;
+  border-top: 2px solid #60a9dc;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.176);
+}
+/* Grid page */
+div .toolbar {background: #ffffff;border: 1px solid #cccccc;}
+.no-touch div .product-image:hover {border-color: #ededed;}
+div ul li a.title, div .section.expanded, div ul li div.toggle,.product-view .add-to-links a  {border: none;}
+.products-list .item .mp_quickview_icon, .products-list .item .mp_quickview_icon { display: none;}
+.products-list .item:hover .mp_quickview_icon, .products-list .item:hover .mp_quickview_icon {display: block;}
+div ul li.section.expanded a.title {background: #3399cc;color: #ffffff;}
+ul.sharing-links {display: none;}
+/* Quick view */
+.quickview-index-view .product-view form .add-to-cart-wrapper, .product-view .block-related {
+  clear: none;
+  float: left;
+  margin: 0 0 0 20px;
+  width: auto;
+  max-width: 57%;
+}
+.quickview-index-view .short-description {
+  float: left;
+  margin: 0 0 0 30px;
+  max-width: 57%;
+}
+/* News Letter */
+div#esns_box_layer {
+  padding: 30px 30px 40px;
+  max-width: 40%;
+  width: 100%;
+}
+#esns_box_block_3 {
+  padding: 30px 0;
+}
+div#esns_box_subscribe_form {
+  padding-top: 30px;
+}
+div #esns_box_subscribe_submit a {
+  background: none repeat scroll 0 0 #3399cc;
+  color: #ffffff;
+}
+div #esns_box_subscribe_input > input {
+  height: 34px;
+  margin-top: 1px;
+}
+/* Notification */
+.Growler-notice {opacity: 1 !important;}
+#Growler .Growler-notice {width: 100%;margin: 0;text-align: center;}
+#Growler {width: 406px !important;padding: 0 !important;}
+#Growler div.Growler-notice-head {font-size: 14px;}
+ul.messages .notice-msg li:before,ul.messages .success-msg li:before {content: none;}
+ul.messages .notice-msg li,ul.messages .success-msg li {
+  background-color: #f9ebe6;
+  border: medium none;
+  color: #a94442;
+  padding: 15px;
+}
+ul.messages .success-msg li{background-color: #dff0d8;color: #3c763d;}
+/* Checkout */
+div .address-information ul li .input-text, div .address-information ul li .select {
+  border: 1px dashed #c0c0c0;
+}
+/*div .one-step-checkout h3,div button#remove_coupon_code_button, div button#add_coupon_code_button, div .onestepcheckout-popup-wrapper h1, div #onestepcheckout-login-popup button.button, div #onestepcheckout-forgot-button, div #onestepcheckout-toc-popup h1, div .onestepcheckout-login-link a span, div #onestepcheckout-forgot-table li.last p a span, p.forgot-link a span, div button.onestepcheckout-btn-checkout {
+  background-color: #3399cc !important;
+}
+div .onestepcheckout-login-link a, div p.forgot-link a, div #onestepcheckout-forgot-table li.last p a {color: #3399cc !important;}*/

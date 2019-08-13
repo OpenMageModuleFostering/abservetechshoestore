@@ -1,0 +1,62 @@
+<div class="brand-products clearfix">
+	<div class="title"> 
+	    <h2> Our Brands </h2>
+	    <p>
+	        Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s.
+	    </p>
+	</div>
+	<div class="brands">
+	<?php 
+		$parentCategoryId = 23;
+		$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
+		$parentcatname = $cat->getName();
+		$subcats = $cat->getChildren();
+	?>	
+	
+		<ul>
+		<?php
+			foreach(explode(',',$subcats) as $subCatid){
+				$_category = Mage::getModel('catalog/category')->load($subCatid);
+			  	if($_category->getIsActive()) { 
+
+			  		$catimagename = Mage::getModel('catalog/category')->load($subCatid)->getThumbnail();
+            		$catimgsrc = Mage::getBaseUrl('media').'catalog/category/'.$catimagename;
+		            if($catimagename){ ?>
+		            	<li class="brand_img border_style1">
+				    		<a href="<?php echo $_category->getURL(); ?>">
+								<img src="<?php echo $catimgsrc; ?>" alt="<?php echo $_category->getName(); ?>">
+							</a>
+						</li>
+		            <?php } ?>
+			    	
+			  	<?php }
+			} 
+		?>
+
+			<!-- <li class="brand_img border_style1">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/reebok.png" alt="brand">
+			</li>	
+			<li class="brand_img border_style1">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/nike.png" alt="brand">
+			</li>
+			<li class="brand_img border_style1">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/adidas.png" alt="brand">
+			</li>
+			<li class="brand_img border_style1">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/puma.png" alt="brand">
+			</li>
+			<li class="brand_img border_style2">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/diadora.png" alt="brand">
+			</li>
+			<li class="brand_img border_style2">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/supra.png" alt="brand">
+			</li>
+			<li class="brand_img border_style2">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/balance.png" alt="brand">
+			</li>
+			<li class="brand_img border_style2">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>settings/henrilloyd.png" alt="brand">
+			</li> -->
+		</ul>	
+	</div>
+</div>	

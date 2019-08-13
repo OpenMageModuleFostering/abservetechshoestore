@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<config>
+<tabs>
+	<settings translate="label" module="settings">
+		<label> Shoestore </label>
+		<sort_order>100</sort_order>
+		<class>settings</class>
+	</settings>
+</tabs>
+<sections>
+	<settings translate="label" module="settings">
+
+		<class>separator-top</class>
+		<label>Shoestore Configuration</label>
+		<tab>settings</tab> <!-- the important one -->
+		<sort_order>10</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>
+
+		<groups>
+
+			<general translate="label"> 
+
+				<label>General Details </label>
+				<frontend_type>text</frontend_type>
+				<sort_order>0</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+
+				<fields>
+					<copyrights translate="label">
+						<label> Copyrights </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</copyrights>
+
+
+					<skype translate="label">
+						<label> Skype Number </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</skype>
+
+					<facebook translate="label">
+						<label> Facebook Id </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</facebook>
+
+					<twitter translate="label">
+						<label> Twitter Id </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</twitter>
+
+					<linkedin translate="label">
+						<label> LinkedIn Id </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</linkedin>
+
+					<gplus translate="label">
+						<label> Google Plus Id </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</gplus>
+
+					<!-- <staus translate="label">
+						<label> Status </label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</staus> -->
+				</fields>
+
+			</general>
+
+
+
+			<contactus translate="label"> 
+				<label> Contactus </label>
+				<frontend_type>text</frontend_type>
+				<sort_order>0</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+
+				<fields>
+
+					<address translate="label">
+						<label> Address Location </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</address>
+
+					<mobileno translate="label">
+						<label> Mobile No </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</mobileno>
+
+					<telephoneno translate="label">
+						<label> Telephone No </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</telephoneno>
+
+					<contactmail translate="label">
+						<label> Contact Email </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</contactmail>
+
+			   	</fields>
+			</contactus>
+
+
+
+
+
+
+			<helpline translate="label"> 
+				<label> Helpline </label>
+				<frontend_type>text</frontend_type>
+				<sort_order>0</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+
+				<fields>
+
+					<helplineno translate="label">
+						<label> Help Line </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</helplineno>
+
+					<helplineemail translate="label">
+						<label> Help Line Email </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</helplineemail>
+
+			   	</fields>
+			</helpline>
+      	</groups>
+
+	</settings>
+</sections>
+</config>

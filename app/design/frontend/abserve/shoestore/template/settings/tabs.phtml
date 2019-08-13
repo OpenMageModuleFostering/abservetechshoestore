@@ -1,0 +1,331 @@
+<div class="category-products">
+<div class="title"> 
+      <h2> Category Products </h2>
+      <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s.
+      </p>
+</div>
+
+<div id="tabs" class="tabs">
+  <nav>
+    <ul>
+      <li><a href="#section-1" class="icon-shop"><span>Mens</span></a></li>
+      <li><a href="#section-2" class="icon-cup"><span>Womens</span></a></li>
+      <li><a href="#section-3" class="icon-food"><span>Kids</span></a></li>
+    </ul>
+  </nav>
+  <div class="content">
+
+    <section id="section-1">
+      <?php 
+          $cat_param = $_GET['cat'] ; 
+          $_helper = $this->helper('catalog/output'); 
+          $_columnCount = $this->getColumnCount();
+          if($cat_param){
+              $cat = Mage::getModel('catalog/category')->load($cat_param);
+          }else{
+              $cat = Mage::getModel('catalog/category')->load(5);
+          }
+          
+          $_productCollection = $cat->getProductCollection()
+              ->addAttributeToSelect('*')
+              ->addAttributeToFilter('status',1)
+              ->addAttributeToFilter('visibility',array('neq' => 1))
+              ->setPageSize(12)
+              ->load();
+          $_productCollection->getSelect()->order('rand()');
+          $today = time();
+      ?>
+      <?php if(!$_productCollection->count()): ?>
+      <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+      <?php else: ?>
+      <?php $_collectionSize = $_productCollection->count() ?>
+      <?php $_columnCount = $this->getColumnCount(); ?>
+      <div class="category-products">
+        <div class="category-carousel">    
+            <div class="customNavigation">
+                <a class="btn prev hvr-bounce-in"> <i class="fa fa-angle-left"></i> </a> 
+                <a class="btn next hvr-bounce-in"> <i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="products-grid">
+                <?php $i=0; foreach ($_productCollection as $_product): ?>
+                <?php  
+                    $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
+                    $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
+                    $savingsDollarValue = ($_product->getPrice() - $_product->getFinalPrice());
+                    $originalPrice = $_product->getPrice(); 
+                    $discountPrice = $_product->getFinalPrice();
+                    $savings = $originalPrice - $discountPrice; 
+                    $savingsPercentage = round(($savings / $originalPrice) * 100, 0);
+                ?>
+                    <div class="item" style="overflow:hidden">
+                        <?php if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime($specialPriceFromDate) && is_null($specialPriceToDate)){ ?> 
+                          <?php if($savingsPercentage > 0){ ?> 
+                            <div class="offer_price"> <?php echo $this->getIdSuffix() ?> <?php echo $savingsPercentage, '%'; ?> <br> Offer </div>
+                          <?php } ?>
+                        <?php } ?>
+                        
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                            <?php $_imgSize = 300; ?>
+                            <img class="lazyOwl" id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>" src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif');?> "
+                                 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" onmouseover="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300) ?>';" onmouseout="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300) ?>';" />
+                        </a>
+                        <div class="product-info">
+                            <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                            <?php
+                            // Provides extra blocks on which to hang some features for products in the list
+                            // Features providing UI elements targeting this block will display directly below the product name
+                            if ($this->getChild('name.after')) {
+                                $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                                foreach ($_nameAfterChildren as $_nameAfterChildName) {
+                                    $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                                    $_nameAfterChild->setProduct($_product);
+                                    echo $_nameAfterChild->toHtml();
+                                }
+                            }
+                            ?>
+                            <?php echo $this->getPriceHtml($_product, true) ?>
+                            <?php if($_product->getRatingSummary()): ?>
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <?php endif; ?>
+                            
+                            <div class="actions">
+                                <?php if($_product->isSaleable() && !$_product->canConfigure()): ?>
+                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>?options=cart')"><i class="fa fa-shopping-cart"></i><span><span><?php echo $this->__('Add to cart') ?></span></span></button>
+                                <?php elseif($_product->isSaleable()): ?>
+                                    <a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><i class="fa fa-eye"></i><?php echo $this->__('View Details') ?></a>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                                <ul class="add-to-links clearfix">
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" onclick='ajaxWishlist("<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>","<?php echo $_product->getId()?>");return false;' class="link-wishlist"><i class="fa fa-heart"></i><?php echo $this->__('Add to Wishlist') ?></a></li>
+                                    <?php endif; ?>
+                                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                        <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>"  onclick='ajaxCompare("<?php echo $_compareUrl ?>","<?php echo $_product->getId()?>");return false;' class="link-compare"><i class="fa fa-files-o"></i><?php echo $this->__('Add to Compare') ?></a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <?php /*if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+                    <?php endif*/ ?>
+                <?php endforeach ?>
+            </div>
+        </div>
+      </div>
+      <?php endif; ?>
+
+    </section>
+    <section id="section-2">
+      <?php 
+          $cat_param = $_GET['cat'] ; 
+          $_helper = $this->helper('catalog/output'); 
+          $_columnCount = $this->getColumnCount();
+          if($cat_param){
+              $cat = Mage::getModel('catalog/category')->load($cat_param);
+          }else{
+              $cat = Mage::getModel('catalog/category')->load(6);
+          }
+          
+          $_productCollection = $cat->getProductCollection()
+              ->addAttributeToSelect('*')
+              ->addAttributeToFilter('status',1)
+              ->addAttributeToFilter('visibility',array('neq' => 1))
+              ->setPageSize(12)
+              ->load();
+          $_productCollection->getSelect()->order('rand()');
+          $today = time();
+      ?>
+      <?php if(!$_productCollection->count()): ?>
+      <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+      <?php else: ?>
+      <?php $_collectionSize = $_productCollection->count() ?>
+      <?php $_columnCount = $this->getColumnCount(); ?>
+      <div class="category-products">
+        <div class="category-carousel">    
+            <div class="customNavigation">
+                <a class="btn prev hvr-bounce-in"> <i class="fa fa-angle-left"></i> </a> 
+                <a class="btn next hvr-bounce-in"> <i class="fa fa-angle-right"></i></a>
+            </div>
+            <ul class="products-grid">
+                <?php $i=0; foreach ($_productCollection as $_product): ?>
+                <?php  
+                    $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
+                    $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
+                    $savingsDollarValue = ($_product->getPrice() - $_product->getFinalPrice());
+                    $originalPrice = $_product->getPrice(); 
+                    $discountPrice = $_product->getFinalPrice();
+                    $savings = $originalPrice - $discountPrice; 
+                    $savingsPercentage = round(($savings / $originalPrice) * 100, 0);
+                ?>
+                    <li class="item" style="overflow:hidden">
+                        <?php if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime($specialPriceFromDate) && is_null($specialPriceToDate)){ ?> 
+                          <?php if($savingsPercentage > 0){ ?> 
+                            <div class="offer_price"> <?php echo $this->getIdSuffix() ?> <?php echo $savingsPercentage, '%'; ?> <br> Offer </div>
+                          <?php } ?>
+                        <?php } ?>
+                        
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                            <?php $_imgSize = 300; ?>
+                            <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                 src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" onmouseover="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300) ?>';" onmouseout="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300) ?>';" />
+                        </a>
+                        <div class="product-info">
+                            <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                            <?php
+                            // Provides extra blocks on which to hang some features for products in the list
+                            // Features providing UI elements targeting this block will display directly below the product name
+                            if ($this->getChild('name.after')) {
+                                $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                                foreach ($_nameAfterChildren as $_nameAfterChildName) {
+                                    $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                                    $_nameAfterChild->setProduct($_product);
+                                    echo $_nameAfterChild->toHtml();
+                                }
+                            }
+                            ?>
+                            <?php echo $this->getPriceHtml($_product, true) ?>
+                            <?php if($_product->getRatingSummary()): ?>
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <?php endif; ?>
+                            
+                            <div class="actions">
+                                <?php if($_product->isSaleable() && !$_product->canConfigure()): ?>
+                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>?options=cart')"><i class="fa fa-shopping-cart"></i><span><span><?php echo $this->__('Add to cart') ?></span></span></button>
+                                <?php elseif($_product->isSaleable()): ?>
+                                    <a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><i class="fa fa-eye"></i><?php echo $this->__('View Details') ?></a>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                                <ul class="add-to-links clearfix">
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" onclick='ajaxWishlist("<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>","<?php echo $_product->getId()?>");return false;' class="link-wishlist"><i class="fa fa-heart"></i><?php echo $this->__('Add to Wishlist') ?></a></li>
+                                    <?php endif; ?>
+                                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                        <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>"  onclick='ajaxCompare("<?php echo $_compareUrl ?>","<?php echo $_product->getId()?>");return false;' class="link-compare"><i class="fa fa-files-o"></i><?php echo $this->__('Add to Compare') ?></a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <?php /*if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+                    <?php endif*/ ?>
+                <?php endforeach ?>
+            </ul>
+        </div>
+      </div>
+      <?php endif; ?>
+    </section>
+    <section id="section-3">
+      <?php 
+          $cat_param = $_GET['cat'] ; 
+          $_helper = $this->helper('catalog/output'); 
+          $_columnCount = $this->getColumnCount();
+          if($cat_param){
+              $cat = Mage::getModel('catalog/category')->load($cat_param);
+          }else{
+              $cat = Mage::getModel('catalog/category')->load(7);
+          }
+          
+          $_productCollection = $cat->getProductCollection()
+              ->addAttributeToSelect('*')
+              ->addAttributeToFilter('status',1)
+              ->addAttributeToFilter('visibility',array('neq' => 1))
+              ->setPageSize(12)
+              ->load();
+          $_productCollection->getSelect()->order('rand()');
+          $today = time();
+      ?>
+      <?php if(!$_productCollection->count()): ?>
+      <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+      <?php else: ?>
+      <?php $_collectionSize = $_productCollection->count() ?>
+      <?php $_columnCount = $this->getColumnCount(); ?>
+      <div class="category-products">
+        <div class="category-carousel">    
+            <div class="customNavigation">
+                <a class="btn prev hvr-bounce-in"> <i class="fa fa-angle-left"></i> </a> 
+                <a class="btn next hvr-bounce-in"> <i class="fa fa-angle-right"></i></a>
+            </div>
+            <ul class="products-grid">
+                <?php $i=0; foreach ($_productCollection as $_product): ?>
+                <?php  
+                    $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
+                    $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
+                    $savingsDollarValue = ($_product->getPrice() - $_product->getFinalPrice());
+                    $originalPrice = $_product->getPrice(); 
+                    $discountPrice = $_product->getFinalPrice();
+                    $savings = $originalPrice - $discountPrice; 
+                    $savingsPercentage = round(($savings / $originalPrice) * 100, 0);
+                ?>
+                    <li class="item" style="overflow:hidden">
+                        <?php if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime($specialPriceFromDate) && is_null($specialPriceToDate)){ ?> 
+                            <?php if($savingsPercentage > 0){ ?> 
+                            <div class="offer_price"> <?php echo $this->getIdSuffix() ?> <?php echo $savingsPercentage, '%'; ?> <br> Offer </div>
+                            <?php } ?>
+                        <?php } ?>
+                        
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                            <?php $_imgSize = 300; ?>
+                            <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                 src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" onmouseover="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300) ?>';" onmouseout="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300) ?>';" />
+                        </a>
+                        <div class="product-info">
+                            <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                            <?php
+                            // Provides extra blocks on which to hang some features for products in the list
+                            // Features providing UI elements targeting this block will display directly below the product name
+                            if ($this->getChild('name.after')) {
+                                $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                                foreach ($_nameAfterChildren as $_nameAfterChildName) {
+                                    $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                                    $_nameAfterChild->setProduct($_product);
+                                    echo $_nameAfterChild->toHtml();
+                                }
+                            }
+                            ?>
+                            <?php echo $this->getPriceHtml($_product, true) ?>
+                            <?php if($_product->getRatingSummary()): ?>
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <?php endif; ?>
+                            
+                            <div class="actions">
+                                <?php if($_product->isSaleable() && !$_product->canConfigure()): ?>
+                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>?options=cart')"><i class="fa fa-shopping-cart"></i><span><span><?php echo $this->__('Add to cart') ?></span></span></button>
+                                <?php elseif($_product->isSaleable()): ?>
+                                    <a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><i class="fa fa-eye"></i><?php echo $this->__('View Details') ?></a>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                                <ul class="add-to-links clearfix">
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" onclick='ajaxWishlist("<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>","<?php echo $_product->getId()?>");return false;' class="link-wishlist"><i class="fa fa-heart"></i><?php echo $this->__('Add to Wishlist') ?></a></li>
+                                    <?php endif; ?>
+                                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                        <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>"  onclick='ajaxCompare("<?php echo $_compareUrl ?>","<?php echo $_product->getId()?>");return false;' class="link-compare"><i class="fa fa-files-o"></i><?php echo $this->__('Add to Compare') ?></a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <?php /*if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+                    <?php endif*/ ?>
+                <?php endforeach ?>
+            </ul>
+        </div>
+      </div>
+      <?php endif; ?>     
+    </section>    
+  </div><!-- /content -->
+</div><!-- /tabs -->
+
+</div>
+
+
+<script type="text/javascript">
+  new CBPFWTabs( document.getElementById( 'tabs' ) );
+</script>

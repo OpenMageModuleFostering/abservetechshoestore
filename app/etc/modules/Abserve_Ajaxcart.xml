@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Abserve Gajjar
+ */
+-->
+<config>
+    <modules>
+        <Abserve_Ajaxcart>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Abserve_Ajaxcart>
+    </modules>
+</config>

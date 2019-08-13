@@ -1,0 +1,41 @@
+<?php
+/**
+ * @category    Abserve
+ * @package     Abserve_Module
+ * @author      Abserve Developer
+ * @license     http://abservetech.com/license-agreement/
+ * @copyright   Copyright (c) 2015 abservetech (http://abservetech.com)
+ */
+?>
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Abserve_AutoCurrency>
+            <version>0.2.0</version>
+        </Abserve_AutoCurrency>
+    </modules>
+    <global>
+        <models>  
+			<autocurrency>
+                <class>Abserve_AutoCurrency_Model</class>                
+            </autocurrency>          
+			<core>
+				<rewrite>
+					<store>Abserve_AutoCurrency_Model_Store</store>
+				</rewrite>
+			</core>
+        </models>        
+        <helpers>
+            <autocurrency>
+                <class>Abserve_AutoCurrency_Helper</class>
+            </autocurrency>
+        </helpers>		
+    </global>
+    <default>
+		<catalog>
+			<autocurrency>
+				<enable_disable>1</enable_disable>				
+			</autocurrency>
+		</catalog>
+	</default>
+</config>
