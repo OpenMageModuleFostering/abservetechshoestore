@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/AbservetechShoestore",
+    "name": "openmage-module-fostering\/abservetechshoestore",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Shoe store  Responsive Free Theme",
     "authors": [
